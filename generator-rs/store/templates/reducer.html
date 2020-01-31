@@ -1,7 +1,13 @@
 import { handleActions } from "redux-actions";
 import { <%= title %>Actions } from "../actions/<%= title %>.actions";
 
-export const initialState: any = {
+export interface I<%= title %>State {
+    data: any,
+    isLoading: boolean,
+    error: boolean
+}
+
+export const initialState: I<%= title %>State = {
     data: null,
     isLoading: false,
     error: false

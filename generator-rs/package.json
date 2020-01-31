@@ -1,6 +1,6 @@
 {
   "name": "generator-rs",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Generator of React components and store entities",
   "main": "index.js",
   "scripts": {
