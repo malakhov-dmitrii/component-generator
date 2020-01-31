@@ -1,0 +1,16 @@
+import { Axios } from 'axios-observable';
+import { map } from 'rxjs/operators';
+import { of } from 'rxjs';
+
+// export const get<%= title %> = () => {
+//     return Axios.request({
+//         method: 'GET',
+//         url: `PASTE_URL_HERE`
+//     }).pipe(
+//         map(({ data }) => data)
+//     );
+// };
+
+export const get<%= title %> = () => {
+    return of<any>({message: "Hello world!"});
+};

@@ -1,0 +1,44 @@
+import { handleActions } from "redux-actions";
+import { <%= title %>Actions } from "../actions/<%= title %>.actions";
+
+export const initialState: any = {
+    data: null,
+    isLoading: false,
+    error: false
+};
+
+export default handleActions(
+{
+
+    // --------------- PENDING --------------------------
+    [<%= title %>Actions.Get<%= title %>](state: any) {
+        return {
+                ...state,
+                isLoading: true,
+                error: false,
+            };
+        },
+
+
+    // --------------- ERROR --------------------------
+    [<%= title %>Actions.Get<%= title %>Error](state: any, { payload: { data } }: any) {
+    return {
+            ...state,
+            error: true,
+            isLoading: false,
+        };
+    },
+
+
+    // --------------- SUCCESS --------------------------
+    [<%= title %>Actions.Get<%= title %>Success](state: any, { payload: { data } }: any) {
+        return {
+            ...state,
+            error: false,
+            isLoading: false,
+            data: data
+        };
+    },
+
+    }, initialState
+)

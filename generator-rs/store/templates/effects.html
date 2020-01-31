@@ -1,0 +1,27 @@
+import { Action } from 'redux-actions';
+import { ActionsObservable, ofType } from 'redux-observable';
+import { of } from 'rxjs';
+import { catchError, map, switchMap } from 'rxjs/operators';
+import { <%= title %>Actions } from '../actions/<%= title %>.actions';
+import { get<%= title %> } from '../services/<%= title %>.service';
+
+export const get<%= title %>$ = (actions$: ActionsObservable<Action<string>>) => {
+    return actions$.pipe(
+    ofType(<%= title %>Actions.Get<%= title %>),
+    switchMap(() => {
+    return get<%= title %>().pipe(
+    map((data) => ({
+    type: <%= title %>Actions.Get<%= title %>Success,
+    payload: { data }
+    })),
+    catchError((error) => {
+    const message = JSON.parse(JSON.stringify(error)).message || 'Неизвестная ошибка';
+    return of({
+    type: <%= title %>Actions.Get<%= title %>Error,
+    payload: { error: message }
+    });
+    })
+    );
+    })
+    );
+    };
