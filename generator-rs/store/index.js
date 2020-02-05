@@ -39,26 +39,26 @@ module.exports = class extends Generator {
     writing() {
         this.fs.copyTpl(
             this.templatePath('actions.html'),
-            this.destinationPath(`actions/${this.name}.actions.ts`),
+            this.destinationPath(`${this.name.toUpperCase()}/${this.name}.actions.ts`),
             {title: this.name}
         );
 
         this.fs.copyTpl(
             this.templatePath('reducer.html'),
-            this.destinationPath(`reducers/${this.name}.reducer.ts`),
+            this.destinationPath(`${this.name.toUpperCase()}/${this.name}.reducer.ts`),
             {title: this.name}
         );
 
         if (this.async) {
             this.fs.copyTpl(
                 this.templatePath('effects.html'),
-                this.destinationPath(`effects/${this.name}.effect.ts`),
+                this.destinationPath(`${this.name.toUpperCase()}/${this.name}.effect.ts`),
                 {title: this.name}
             );
 
             this.fs.copyTpl(
                 this.templatePath('service.html'),
-                this.destinationPath(`services/${this.name}.service.ts`),
+                this.destinationPath(`${this.name.toUpperCase()}/${this.name}.service.ts`),
                 {title: this.name}
             );
         }
