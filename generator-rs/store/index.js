@@ -37,31 +37,37 @@ module.exports = class extends Generator {
     }
 
     writing() {
+        const n = capitalize(this.name);
+
         this.fs.copyTpl(
             this.templatePath('actions.html'),
-            this.destinationPath(`${this.name.toUpperCase()}/${this.name}.actions.ts`),
-            {title: this.name}
+            this.destinationPath(`${n}/${n}.actions.ts`),
+            {title: n}
         );
 
         this.fs.copyTpl(
             this.templatePath('reducer.html'),
-            this.destinationPath(`${this.name.toUpperCase()}/${this.name}.reducer.ts`),
-            {title: this.name}
+            this.destinationPath(`${n}/${n}.reducer.ts`),
+            {title: n}
         );
 
         if (this.async) {
             this.fs.copyTpl(
                 this.templatePath('effects.html'),
-                this.destinationPath(`${this.name.toUpperCase()}/${this.name}.effect.ts`),
-                {title: this.name}
+                this.destinationPath(`${n}/${n}.effect.ts`),
+                {title: n}
             );
 
             this.fs.copyTpl(
                 this.templatePath('service.html'),
-                this.destinationPath(`${this.name.toUpperCase()}/${this.name}.service.ts`),
-                {title: this.name}
+                this.destinationPath(`${n}/${n}.service.ts`),
+                {title: n}
             );
         }
 
     }
 };
+
+function capitalize(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
